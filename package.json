@@ -1,7 +1,11 @@
 {
-  "name": "wemalo",
-  "version": "0.1.0",
-  "private": true,
+  "name": "wemalo-integration",
+  "version": "1.0.0",
+  "private": false,
+  "author": {
+    "name": "Jesus Marcano",
+    "email": "jesusmarcanody@gmail.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
