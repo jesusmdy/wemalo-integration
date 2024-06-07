@@ -6,8 +6,8 @@ import { FC, PropsWithChildren, useEffect } from "react"
 
 export function Splash() {
   return (
-    <div className="flex items-center justify-center h-screen flex-col">
-      <div className="size-12 border-4 border-t-purple-500 rounded-full animate-spin"></div>
+    <div className="flex items-center justify-center h-screen flex-col dark:bg-zinc-900">
+      <div className="size-12 border-4 dark:border-zinc-700 dark:border-t-purple-500 border-t-purple-500 rounded-full animate-spin"></div>
     </div>
   )
 }

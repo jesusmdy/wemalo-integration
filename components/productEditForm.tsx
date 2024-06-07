@@ -30,6 +30,7 @@ const ProductEditForm: FC<IProductEditForm> = ({product}) => {
   const [loading, toggleLoading] = useToggle()
   const [saved, toggleSaved] = useToggle()
   const [error, toggleError] = useToggle()
+
   const form = useForm<TForm>({
     defaultValues: product
   })
@@ -37,11 +38,9 @@ const ProductEditForm: FC<IProductEditForm> = ({product}) => {
   async function onSubmit(values: TForm) {
     toggleLoading(true)
     try {
-      await fetch('https://dummyjson.com/products/1', {
+      await fetch(`https://dummyjson.com/products/${product.id}`, {
         method: 'PUT',
-        body: JSON.stringify({
-          title: 'iPhone Galaxy +1'
-        })
+        body: JSON.stringify(values)
       })
       toggleSaved(true)
     } catch(e) {
@@ -95,7 +94,8 @@ const ProductEditForm: FC<IProductEditForm> = ({product}) => {
                 <p className="text-red-500 text-sm">Error updating product</p>
               )
             }
-            <div className="flex justify-end">
+            <div className="flex justify-between items-center border-t dark:border-zinc-700 pt-4 mt-2">
+              <Link href="/products" className="px-2 py-1 text-xs font-semibold">Cancel</Link>
               {
                 loading
                   ? (
@@ -104,7 +104,7 @@ const ProductEditForm: FC<IProductEditForm> = ({product}) => {
                   : (
                     <button
                       type="submit"
-                      className="px-4 py-1 border rounded-md text-sm dark:border-zinc-700"
+                      className="px-4 py-1 rounded-md text-xs bg-purple-500 text-purple-50"
                       disabled={!form.formState.isValid || !form.formState.touchedFields}
                     >
                       Update
